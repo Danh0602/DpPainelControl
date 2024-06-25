@@ -28,43 +28,13 @@ async function fetchAndDisplayData(filename, type) {
         const userData = jsonData.find(item => item.RE === userRE);
 
         if (userData) {
-            const formattedData = formatData(userData);
-            displayData(formattedData, type);
+            displayData(userData, type);
         } else {
             alert('Dados do usuário não encontrados!');
         }
     } catch (error) {
         console.error('Erro ao buscar dados:', error);
     }
-}
-
-function formatData(data) {
-    const formattedData = {};
-    for (const key in data) {
-        if (data.hasOwnProperty(key)) {
-            const value = data[key];
-            if (isDate(value)) {
-                // Se for uma data válida, formata para dd/MM/yyyy
-                const date = new Date(value);
-                formattedData[key] = `${('0' + date.getDate()).slice(-2)}/${('0' + (date.getMonth() + 1)).slice(-2)}/${date.getFullYear()}`;
-            } else if (key === 'Iníc.Plan.Fér.' || key === 'Fim Plan.Fér.') {
-                // Trata os campos específicos que devem exibir "Vazio" se estiverem vazios
-                formattedData[key] = value || 'Vazio';
-            } else if (value === null || value === undefined || value === '') {
-                // Correção: Use || para verificar se é nulo, indefinido ou vazio
-                formattedData[key] = value;
-            } else {
-                // Caso contrário, mantém o valor original
-                formattedData[key] = value.toString(); // Garante que seja string para exibição
-            }
-        }
-    }
-    return formattedData;
-}
-
-function isDate(value) {
-    // Função para verificar se um valor pode ser interpretado como uma data válida
-    return (typeof value === 'string' && !isNaN(Date.parse(value)));
 }
 
 function displayData(data, type) {
