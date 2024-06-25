@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function fetchAndDisplayData(filename, type) {
-    const blobUrl = `https://app03.blob.core.windows.net/app/${filename}?sp=r&st=2024-06-25T19:36:25Z&se=2024-06-26T03:36:25Z&sv=2022-11-02&sr=c&sig=lvUGssL4tcZKj%2BxbUxazsTwT2q1MRyRuQ4iI2xYFUFI%3D`;
+    const blobUrl = `https://app03.blob.core.windows.net/app/${filename}?sp=racdl&st=2024-06-25T19:44:01Z&se=2024-06-26T03:44:01Z&spr=https&sv=2022-11-02&sr=c&sig=so0v4%2FIHIUHaEmqRJEiMxBZdsz3%2Fw5rYrPUhUekzNXA%3D`;
     try {
         const response = await fetch(blobUrl);
         if (!response.ok) {
