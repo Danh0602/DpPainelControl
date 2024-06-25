@@ -55,7 +55,7 @@ function formatData(data) {
                 formattedData[key] = value;
             } else {
                 // Caso contrário, mantém o valor original
-                formattedData[key] = value;
+                formattedData[key] = value.toString(); // Garante que seja string para exibição
             }
         }
     }
